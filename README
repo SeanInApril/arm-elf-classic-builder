@@ -13,7 +13,7 @@ gcc-3.2.1
 gdb-8.1
 newlib-1.11.0
 
-This is an initial version, and some many places should be optimized.
+This is an initial version, and so many places should be optimized.
 
 patches I made are mainly caused by the compatibility between the packages and
 the new Ubuntu envirments
