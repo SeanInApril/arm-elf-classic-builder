@@ -2,7 +2,7 @@
 #
 # Makefile
 #
-# SeanInApril@163.com
+# Sean<SeanInApril@163.com>
 #
 # build arm-elf toolchain classic version 3.2.1 in mordern ubuntu envirments
 #
