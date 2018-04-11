@@ -1,0 +1,11 @@
+--- src/gcc-3.4.6/gcc/collect2.c	2005-01-10 10:25:23.000000000 -0500
++++ src/gcc-3.4.6/gcc/collect2.c_mod	2018-03-10 10:56:06.934309364 -0500
+@@ -1534,7 +1534,7 @@
+   if (redir)
+     {
+       /* Open response file.  */
+-      redir_handle = open (redir, O_WRONLY | O_TRUNC | O_CREAT);
++      redir_handle = open (redir, O_WRONLY | O_TRUNC | O_CREAT, 0777);
+ 
+       /* Duplicate the stdout and stderr file handles
+ 	 so they can be restored later.  */

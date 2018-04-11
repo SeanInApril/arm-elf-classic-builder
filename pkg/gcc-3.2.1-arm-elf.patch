@@ -1,0 +1,292 @@
+diff -Naur src/gcc-3.2.1/configure src/gcc-3.2.1-patched/configure
+--- src/gcc-3.2.1/configure	2002-06-24 12:14:28.000000000 -0400
++++ src/gcc-3.2.1-patched/configure	2018-04-11 00:30:54.538526713 -0400
+@@ -1030,8 +1030,10 @@
+ 	CC="gcc"
+ 	echo 'void f(){}' > conftest.c
+ 	if test -z "`${CC} -g -c conftest.c 2>&1`"; then
+-	  CFLAGS=${CFLAGS-"-g -O2"}
+-	  CXXFLAGS=${CXXFLAGS-"-g -O2"}
++#	  CFLAGS=${CFLAGS-"-g -O2"}
++#	  CXXFLAGS=${CXXFLAGS-"-g -O2"}
++	  CFLAGS=${CFLAGS-"-g"}
++	  CXXFLAGS=${CXXFLAGS-"-g"}
+ 	else
+ 	  CFLAGS=${CFLAGS-"-O2"}
+ 	  CXXFLAGS=${CXXFLAGS-"-O2"}
+diff -Naur src/gcc-3.2.1/gcc/cp/cfns.h src/gcc-3.2.1-patched/gcc/cp/cfns.h
+--- src/gcc-3.2.1/gcc/cp/cfns.h	2000-04-04 16:46:23.000000000 -0400
++++ src/gcc-3.2.1-patched/gcc/cp/cfns.h	2018-04-11 00:09:47.336962897 -0400
+@@ -70,7 +70,7 @@
+ }
+ 
+ #ifdef __GNUC__
+-__inline
++//__inline
+ #endif
+ const char *
+ libc_name_p (str, len)
+diff -Naur src/gcc-3.2.1/gcc/cp/decl.c src/gcc-3.2.1-patched/gcc/cp/decl.c
+--- src/gcc-3.2.1/gcc/cp/decl.c	2002-10-30 19:02:33.000000000 -0500
++++ src/gcc-3.2.1-patched/gcc/cp/decl.c	2018-04-11 00:09:47.336962897 -0400
+@@ -507,7 +507,14 @@
+      are active.  */
+   memset ((char*) newlevel, 0, sizeof (struct binding_level));
+   newlevel->level_chain = current_binding_level;
++#if 0 //orginal code
+   current_binding_level = newlevel;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = newlevel;
++  else
++    scope_chain->bindings = newlevel;
++#endif
+   newlevel->tag_transparent = tag_transparent;
+   newlevel->more_cleanups_ok = 1;
+ 
+@@ -563,7 +570,14 @@
+ #endif /* defined(DEBUG_CP_BINDING_LEVELS) */
+   {
+     register struct binding_level *level = current_binding_level;
++#if 0 //original code
+     current_binding_level = current_binding_level->level_chain;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = current_binding_level->level_chain;
++  else
++    scope_chain->bindings = current_binding_level->level_chain;
++#endif
+     level->level_chain = free_binding_level;
+ #if 0 /* defined(DEBUG_CP_BINDING_LEVELS) */
+     if (level->binding_depth != binding_depth)
+@@ -578,7 +592,16 @@
+ suspend_binding_level ()
+ {
+   if (class_binding_level)
++  {
++#if 0
+     current_binding_level = class_binding_level;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = class_binding_level;
++  else
++    scope_chain->bindings = class_binding_level;
++#endif
++  }
+ 
+   if (global_binding_level)
+     {
+@@ -600,7 +623,15 @@
+     }
+   is_class_level = 0;
+ #endif /* defined(DEBUG_CP_BINDING_LEVELS) */
++#if 0 //original code
+   current_binding_level = current_binding_level->level_chain;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = current_binding_level->level_chain;
++  else
++    scope_chain->bindings = current_binding_level->level_chain;
++#endif
++
+   find_class_binding_level ();
+ }
+ 
+@@ -613,7 +644,15 @@
+   my_friendly_assert(!class_binding_level, 386);
+   /* Also, resuming a non-directly nested namespace is a no-no.  */
+   my_friendly_assert(b->level_chain == current_binding_level, 386);
++#if 0 //original code
+   current_binding_level = b;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = b;
++  else
++    scope_chain->bindings = b;
++#endif
++
+ #if defined(DEBUG_CP_BINDING_LEVELS)
+   b->binding_depth = binding_depth;
+   indent ();
+@@ -4291,9 +4330,24 @@
+   else
+     {
+       b = current_binding_level;
++#if 0 //original code
+       current_binding_level = level;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = level;
++  else
++    scope_chain->bindings = level;
++#endif
++
+       x = pushdecl (x);
++#if 0
+       current_binding_level = b;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = b;
++  else
++    scope_chain->bindings = b;
++#endif
+     }
+   current_function_decl = function_decl;
+   return x;
+@@ -6532,7 +6586,15 @@
+   current_lang_name = lang_name_c;
+ 
+   current_function_decl = NULL_TREE;
++#if 0
+   current_binding_level = NULL_BINDING_LEVEL;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = NULL_BINDING_LEVEL;
++  else
++    scope_chain->bindings = NULL_BINDING_LEVEL;
++#endif
++
+   free_binding_level = NULL_BINDING_LEVEL;
+ 
+   build_common_tree_nodes (flag_signed_char);
+@@ -10118,10 +10180,25 @@
+   if (decl_context == NORMAL && !toplevel_bindings_p ())
+     {
+       struct binding_level *b = current_binding_level;
++#if 0
+       current_binding_level = b->level_chain;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = b->level_chain;
++  else
++    scope_chain->bindings = b->level_chain;
++#endif
++
+       if (current_binding_level != 0 && toplevel_bindings_p ())
+ 	decl_context = PARM;
++#if 0
+       current_binding_level = b;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = b;
++  else
++    scope_chain->bindings = b;
++#endif
+     }
+ 
+   if (name == NULL)
+@@ -13751,7 +13828,14 @@
+      FIXME factor out the non-RTL stuff.  */
+   bl = current_binding_level;
+   init_function_start (decl1, input_filename, lineno);
++#if 0
+   current_binding_level = bl;
++#else
++  if(cfun && cp_function_chain->bindings)
++    cp_function_chain->bindings = bl;
++  else
++    scope_chain->bindings = bl;
++#endif
+ 
+   /* Even though we're inside a function body, we still don't want to
+      call expand_expr to calculate the size of a variable-sized array.
+diff -Naur src/gcc-3.2.1/include/obstack.h src/gcc-3.2.1-patched/include/obstack.h
+--- src/gcc-3.2.1/include/obstack.h	2001-03-14 14:44:38.000000000 -0500
++++ src/gcc-3.2.1-patched/include/obstack.h	2018-04-11 00:09:47.336962897 -0400
+@@ -343,7 +343,7 @@
+ 
+ #endif
+ 
+-#define obstack_1grow_fast(h,achar) (*((h)->next_free)++ = achar)
++#define obstack_1grow_fast(h,achar) (*((h)->next_free)++ = (achar))
+ 
+ #define obstack_blank_fast(h,n) ((h)->next_free += (n))
+ 
+@@ -411,7 +411,7 @@
+ ({ struct obstack *__o = (OBSTACK);					\
+    if (__o->next_free + 1 > __o->chunk_limit)				\
+      _obstack_newchunk (__o, 1);					\
+-   *(__o->next_free)++ = (datum);					\
++   obstack_1grow_fast (__o, datum);					\
+    (void) 0; })
+ 
+ /* These assume that the obstack alignment is good enough for pointers or ints,
+@@ -423,19 +423,28 @@
+ ({ struct obstack *__o = (OBSTACK);					\
+    if (__o->next_free + sizeof (void *) > __o->chunk_limit)		\
+      _obstack_newchunk (__o, sizeof (void *));				\
+-   *((void **)__o->next_free)++ = ((void *)datum);			\
+-   (void) 0; })
++   obstack_ptr_grow_fast (__o, datum); })
+ 
+ # define obstack_int_grow(OBSTACK,datum)				\
+ __extension__								\
+ ({ struct obstack *__o = (OBSTACK);					\
+    if (__o->next_free + sizeof (int) > __o->chunk_limit)		\
+      _obstack_newchunk (__o, sizeof (int));				\
+-   *((int *)__o->next_free)++ = ((int)datum);				\
++   obstack_int_grow_fast (__o, datum); })
++
++# define obstack_ptr_grow_fast(OBSTACK,aptr)				\
++__extension__								\
++({ struct obstack *__o1 = (OBSTACK);					\
++   *(const void **) __o1->next_free = (aptr);				\
++   __o1->next_free += sizeof (const void *);				\
+    (void) 0; })
+ 
+-# define obstack_ptr_grow_fast(h,aptr) (*((void **) (h)->next_free)++ = (void *)aptr)
+-# define obstack_int_grow_fast(h,aint) (*((int *) (h)->next_free)++ = (int) aint)
++# define obstack_int_grow_fast(OBSTACK,aint)				\
++__extension__								\
++({ struct obstack *__o1 = (OBSTACK);					\
++   *(int *) __o1->next_free = (aint);					\
++   __o1->next_free += sizeof (int);					\
++   (void) 0; })
+ 
+ # define obstack_blank(OBSTACK,length)					\
+ __extension__								\
+@@ -443,7 +452,7 @@
+    int __len = (length);						\
+    if (__o->chunk_limit - __o->next_free < __len)			\
+      _obstack_newchunk (__o, __len);					\
+-   __o->next_free += __len;						\
++   obstack_blank_fast (__o, __len);					\
+    (void) 0; })
+ 
+ # define obstack_alloc(OBSTACK,length)					\
+@@ -530,26 +539,29 @@
+ # define obstack_1grow(h,datum)						\
+ ( (((h)->next_free + 1 > (h)->chunk_limit)				\
+    ? (_obstack_newchunk ((h), 1), 0) : 0),				\
+-  (*((h)->next_free)++ = (datum)))
++  obstack_1grow_fast (h, datum))
+ 
+ # define obstack_ptr_grow(h,datum)					\
+ ( (((h)->next_free + sizeof (char *) > (h)->chunk_limit)		\
+    ? (_obstack_newchunk ((h), sizeof (char *)), 0) : 0),		\
+-  (*((char **) (((h)->next_free+=sizeof(char *))-sizeof(char *))) = ((char *) datum)))
++  obstack_ptr_grow_fast (h, datum))
+ 
+ # define obstack_int_grow(h,datum)					\
+ ( (((h)->next_free + sizeof (int) > (h)->chunk_limit)			\
+    ? (_obstack_newchunk ((h), sizeof (int)), 0) : 0),			\
+-  (*((int *) (((h)->next_free+=sizeof(int))-sizeof(int))) = ((int) datum)))
++  obstack_int_grow_fast (h, datum))
++
++# define obstack_ptr_grow_fast(h,aptr)					\
++  (((const void **) ((h)->next_free += sizeof (void *)))[-1] = (aptr))
+ 
+-# define obstack_ptr_grow_fast(h,aptr) (*((char **) (h)->next_free)++ = (char *) aptr)
+-# define obstack_int_grow_fast(h,aint) (*((int *) (h)->next_free)++ = (int) aint)
++# define obstack_int_grow_fast(h,aint)					\
++  (((int *) ((h)->next_free += sizeof (int)))[-1] = (aptr))
+ 
+ # define obstack_blank(h,length)					\
+ ( (h)->temp = (length),							\
+   (((h)->chunk_limit - (h)->next_free < (h)->temp)			\
+    ? (_obstack_newchunk ((h), (h)->temp), 0) : 0),			\
+-  ((h)->next_free += (h)->temp))
++  obstack_blank_fast (h, (h)->temp))
+ 
+ # define obstack_alloc(h,length)					\
+  (obstack_blank ((h), (length)), obstack_finish ((h)))

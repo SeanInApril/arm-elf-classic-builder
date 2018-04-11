@@ -1,0 +1,1034 @@
+diff -Naur src/binutils-2.13.1/bfd/doc/archive.texi src/binutils-2.13.1-patched/bfd/doc/archive.texi
+--- src/binutils-2.13.1/bfd/doc/archive.texi	2002-08-05 16:43:44.000000000 -0400
++++ src/binutils-2.13.1-patched/bfd/doc/archive.texi	2018-04-11 00:09:46.412967511 -0400
+@@ -51,7 +51,7 @@
+ Archives are supported in BFD in @code{archive.c}.
+ 
+ @findex bfd_get_next_mapent
+-@subsubsection @code{bfd_get_next_mapent}
++sean-subsubsection @code{bfd_get_next_mapent}
+ @strong{Synopsis}
+ @example
+ symindex bfd_get_next_mapent(bfd *abfd, symindex previous, carsym **sym);
+@@ -70,7 +70,7 @@
+ user-visible element is its name, a null-terminated string.
+ 
+ @findex bfd_set_archive_head
+-@subsubsection @code{bfd_set_archive_head}
++sean-subsubsection @code{bfd_set_archive_head}
+ @strong{Synopsis}
+ @example
+ boolean bfd_set_archive_head(bfd *output, bfd *new_head);
+@@ -80,7 +80,7 @@
+ BFDs contained in the archive @var{output} to @var{new_head}.
+ 
+ @findex bfd_openr_next_archived_file
+-@subsubsection @code{bfd_openr_next_archived_file}
++sean-subsubsection @code{bfd_openr_next_archived_file}
+ @strong{Synopsis}
+ @example
+ bfd *bfd_openr_next_archived_file(bfd *archive, bfd *previous);
+diff -Naur src/binutils-2.13.1/bfd/doc/bfd.texinfo src/binutils-2.13.1-patched/bfd/doc/bfd.texinfo
+--- src/binutils-2.13.1/bfd/doc/bfd.texinfo	2001-10-30 10:20:03.000000000 -0500
++++ src/binutils-2.13.1-patched/bfd/doc/bfd.texinfo	2018-04-11 00:09:46.412967511 -0400
+@@ -691,7 +691,7 @@
+ @printindex cp
+ 
+ @tex
+-% I think something like @colophon should be in texinfo.  In the
++% I think something like sean-colophon should be in texinfo.  In the
+ % meantime:
+ \long\def\colophon{\hbox to0pt{}\vfill
+ \centerline{The body of this manual is set in}
+@@ -702,7 +702,7 @@
+ \centerline{{\sl\fontname\tensl\/}}
+ \centerline{are used for emphasis.}\vfill}
+ \page\colophon
+-% Blame: doc@cygnus.com, 28mar91.
++% Blame: docsean-cygnus.com, 28mar91.
+ @end tex
+ 
+ @contents
+diff -Naur src/binutils-2.13.1/bfd/doc/bfdt.texi src/binutils-2.13.1-patched/bfd/doc/bfdt.texi
+--- src/binutils-2.13.1/bfd/doc/bfdt.texi	2002-10-30 12:02:37.000000000 -0500
++++ src/binutils-2.13.1-patched/bfd/doc/bfdt.texi	2018-04-11 00:09:46.412967511 -0400
+@@ -314,7 +314,7 @@
+ 
+ 
+ @findex bfd_get_reloc_upper_bound
+-@subsubsection @code{bfd_get_reloc_upper_bound}
++sean-subsubsection @code{bfd_get_reloc_upper_bound}
+ @strong{Synopsis}
+ @example
+ long bfd_get_reloc_upper_bound(bfd *abfd, asection *sect);
+@@ -325,7 +325,7 @@
+ attached to bfd @var{abfd}.  If an error occurs, return -1.
+ 
+ @findex bfd_canonicalize_reloc
+-@subsubsection @code{bfd_canonicalize_reloc}
++sean-subsubsection @code{bfd_canonicalize_reloc}
+ @strong{Synopsis}
+ @example
+ long bfd_canonicalize_reloc
+@@ -347,7 +347,7 @@
+ reasons.
+ 
+ @findex bfd_set_reloc
+-@subsubsection @code{bfd_set_reloc}
++sean-subsubsection @code{bfd_set_reloc}
+ @strong{Synopsis}
+ @example
+ void bfd_set_reloc
+@@ -359,7 +359,7 @@
+ The argument @var{abfd} is ignored.
+ 
+ @findex bfd_set_file_flags
+-@subsubsection @code{bfd_set_file_flags}
++sean-subsubsection @code{bfd_set_file_flags}
+ @strong{Synopsis}
+ @example
+ boolean bfd_set_file_flags(bfd *abfd, flagword flags);
+@@ -382,7 +382,7 @@
+ @end itemize
+ 
+ @findex bfd_get_arch_size
+-@subsubsection @code{bfd_get_arch_size}
++sean-subsubsection @code{bfd_get_arch_size}
+ @strong{Synopsis}
+ @example
+ int bfd_get_arch_size (bfd *abfd);
+@@ -396,7 +396,7 @@
+ Returns the arch size in bits if known, @code{-1} otherwise.
+ 
+ @findex bfd_get_sign_extend_vma
+-@subsubsection @code{bfd_get_sign_extend_vma}
++sean-subsubsection @code{bfd_get_sign_extend_vma}
+ @strong{Synopsis}
+ @example
+ int bfd_get_sign_extend_vma (bfd *abfd);
+@@ -415,7 +415,7 @@
+ not sign extend addresses, and @code{-1} otherwise.
+ 
+ @findex bfd_set_start_address
+-@subsubsection @code{bfd_set_start_address}
++sean-subsubsection @code{bfd_set_start_address}
+ @strong{Synopsis}
+ @example
+ boolean bfd_set_start_address(bfd *abfd, bfd_vma vma);
+@@ -427,7 +427,7 @@
+ Returns @code{true} on success, @code{false} otherwise.
+ 
+ @findex bfd_get_mtime
+-@subsubsection @code{bfd_get_mtime}
++sean-subsubsection @code{bfd_get_mtime}
+ @strong{Synopsis}
+ @example
+ long bfd_get_mtime(bfd *abfd);
+@@ -437,7 +437,7 @@
+ from the archive header for archive members).
+ 
+ @findex bfd_get_size
+-@subsubsection @code{bfd_get_size}
++sean-subsubsection @code{bfd_get_size}
+ @strong{Synopsis}
+ @example
+ long bfd_get_size(bfd *abfd);
+@@ -468,7 +468,7 @@
+ size reasonable?".
+ 
+ @findex bfd_get_gp_size
+-@subsubsection @code{bfd_get_gp_size}
++sean-subsubsection @code{bfd_get_gp_size}
+ @strong{Synopsis}
+ @example
+ unsigned int bfd_get_gp_size(bfd *abfd);
+@@ -479,7 +479,7 @@
+ argument to the compiler, assembler or linker.
+ 
+ @findex bfd_set_gp_size
+-@subsubsection @code{bfd_set_gp_size}
++sean-subsubsection @code{bfd_set_gp_size}
+ @strong{Synopsis}
+ @example
+ void bfd_set_gp_size(bfd *abfd, unsigned int i);
+@@ -490,7 +490,7 @@
+ the @code{-G} argument to the compiler, assembler or linker.
+ 
+ @findex bfd_scan_vma
+-@subsubsection @code{bfd_scan_vma}
++sean-subsubsection @code{bfd_scan_vma}
+ @strong{Synopsis}
+ @example
+ bfd_vma bfd_scan_vma(const char *string, const char **end, int base);
+@@ -509,7 +509,7 @@
+ returned.
+ 
+ @findex bfd_copy_private_bfd_data
+-@subsubsection @code{bfd_copy_private_bfd_data}
++sean-subsubsection @code{bfd_copy_private_bfd_data}
+ @strong{Synopsis}
+ @example
+ boolean bfd_copy_private_bfd_data(bfd *ibfd, bfd *obfd);
+@@ -532,7 +532,7 @@
+ @end example
+ 
+ @findex bfd_merge_private_bfd_data
+-@subsubsection @code{bfd_merge_private_bfd_data}
++sean-subsubsection @code{bfd_merge_private_bfd_data}
+ @strong{Synopsis}
+ @example
+ boolean bfd_merge_private_bfd_data(bfd *ibfd, bfd *obfd);
+@@ -555,7 +555,7 @@
+ @end example
+ 
+ @findex bfd_set_private_flags
+-@subsubsection @code{bfd_set_private_flags}
++sean-subsubsection @code{bfd_set_private_flags}
+ @strong{Synopsis}
+ @example
+ boolean bfd_set_private_flags(bfd *abfd, flagword flags);
+@@ -578,7 +578,7 @@
+ @end example
+ 
+ @findex stuff
+-@subsubsection @code{stuff}
++sean-subsubsection @code{stuff}
+ @strong{Description}@*
+ Stuff which should be documented:
+ @example
+@@ -661,7 +661,7 @@
+ @end example
+ 
+ @findex bfd_alt_mach_code
+-@subsubsection @code{bfd_alt_mach_code}
++sean-subsubsection @code{bfd_alt_mach_code}
+ @strong{Synopsis}
+ @example
+ boolean bfd_alt_mach_code(bfd *abfd, int alternative);
+diff -Naur src/binutils-2.13.1/bfd/doc/cache.texi src/binutils-2.13.1-patched/bfd/doc/cache.texi
+--- src/binutils-2.13.1/bfd/doc/cache.texi	2002-08-05 16:43:45.000000000 -0400
++++ src/binutils-2.13.1-patched/bfd/doc/cache.texi	2018-04-11 00:09:46.412967511 -0400
+@@ -11,7 +11,7 @@
+ handle.
+ 
+ @findex BFD_CACHE_MAX_OPEN macro
+-@subsubsection @code{BFD_CACHE_MAX_OPEN macro}
++sean-subsubsection @code{BFD_CACHE_MAX_OPEN macro}
+ @strong{Description}@*
+ The maximum number of files which the cache will keep open at
+ one time.
+@@ -20,7 +20,7 @@
+ @end example
+ 
+ @findex bfd_last_cache
+-@subsubsection @code{bfd_last_cache}
++sean-subsubsection @code{bfd_last_cache}
+ @strong{Synopsis}
+ @example
+ extern bfd *bfd_last_cache;
+@@ -31,7 +31,7 @@
+ determine when it can avoid a function call.
+ 
+ @findex bfd_cache_lookup
+-@subsubsection @code{bfd_cache_lookup}
++sean-subsubsection @code{bfd_cache_lookup}
+ @strong{Description}@*
+ Check to see if the required BFD is the same as the last one
+ looked up. If so, then it can use the stream in the BFD with
+@@ -45,7 +45,7 @@
+ @end example
+ 
+ @findex bfd_cache_init
+-@subsubsection @code{bfd_cache_init}
++sean-subsubsection @code{bfd_cache_init}
+ @strong{Synopsis}
+ @example
+ boolean bfd_cache_init (bfd *abfd);
+@@ -54,7 +54,7 @@
+ Add a newly opened BFD to the cache.
+ 
+ @findex bfd_cache_close
+-@subsubsection @code{bfd_cache_close}
++sean-subsubsection @code{bfd_cache_close}
+ @strong{Synopsis}
+ @example
+ boolean bfd_cache_close (bfd *abfd);
+@@ -68,7 +68,7 @@
+ returned if all is well.
+ 
+ @findex bfd_open_file
+-@subsubsection @code{bfd_open_file}
++sean-subsubsection @code{bfd_open_file}
+ @strong{Synopsis}
+ @example
+ FILE* bfd_open_file(bfd *abfd);
+@@ -81,7 +81,7 @@
+ cache, so it won't have to be removed from it.
+ 
+ @findex bfd_cache_lookup_worker
+-@subsubsection @code{bfd_cache_lookup_worker}
++sean-subsubsection @code{bfd_cache_lookup_worker}
+ @strong{Synopsis}
+ @example
+ FILE *bfd_cache_lookup_worker(bfd *abfd);
+diff -Naur src/binutils-2.13.1/bfd/doc/core.texi src/binutils-2.13.1-patched/bfd/doc/core.texi
+--- src/binutils-2.13.1/bfd/doc/core.texi	2002-08-05 16:43:45.000000000 -0400
++++ src/binutils-2.13.1-patched/bfd/doc/core.texi	2018-04-11 00:09:46.412967511 -0400
+@@ -5,7 +5,7 @@
+ These are functions pertaining to core files.
+ 
+ @findex bfd_core_file_failing_command
+-@subsubsection @code{bfd_core_file_failing_command}
++sean-subsubsection @code{bfd_core_file_failing_command}
+ @strong{Synopsis}
+ @example
+ const char *bfd_core_file_failing_command(bfd *abfd);
+@@ -15,7 +15,7 @@
+ when it failed and produced the core file @var{abfd}.
+ 
+ @findex bfd_core_file_failing_signal
+-@subsubsection @code{bfd_core_file_failing_signal}
++sean-subsubsection @code{bfd_core_file_failing_signal}
+ @strong{Synopsis}
+ @example
+ int bfd_core_file_failing_signal(bfd *abfd);
+@@ -25,7 +25,7 @@
+ generated the file the BFD @var{abfd} is attached to.
+ 
+ @findex core_file_matches_executable_p
+-@subsubsection @code{core_file_matches_executable_p}
++sean-subsubsection @code{core_file_matches_executable_p}
+ @strong{Synopsis}
+ @example
+ boolean core_file_matches_executable_p
+diff -Naur src/binutils-2.13.1/bfd/doc/elf.texi src/binutils-2.13.1-patched/bfd/doc/elf.texi
+--- src/binutils-2.13.1/bfd/doc/elf.texi	2002-08-05 16:43:45.000000000 -0400
++++ src/binutils-2.13.1-patched/bfd/doc/elf.texi	2018-04-11 00:09:46.412967511 -0400
+@@ -1,4 +1,4 @@
+-@section 
++sean-section 
+ ELF backends
+ 
+ BFD support for ELF formats is being worked on.
+diff -Naur src/binutils-2.13.1/bfd/doc/format.texi src/binutils-2.13.1-patched/bfd/doc/format.texi
+--- src/binutils-2.13.1/bfd/doc/format.texi	2002-08-05 16:43:45.000000000 -0400
++++ src/binutils-2.13.1-patched/bfd/doc/format.texi	2018-04-11 00:09:46.416967492 -0400
+@@ -24,7 +24,7 @@
+ The BFD contains the result of an executable core dump.
+ 
+ @findex bfd_check_format
+-@subsubsection @code{bfd_check_format}
++sean-subsubsection @code{bfd_check_format}
+ @strong{Synopsis}
+ @example
+ boolean bfd_check_format(bfd *abfd, bfd_format format);
+@@ -67,7 +67,7 @@
+ @end itemize
+ 
+ @findex bfd_check_format_matches
+-@subsubsection @code{bfd_check_format_matches}
++sean-subsubsection @code{bfd_check_format_matches}
+ @strong{Synopsis}
+ @example
+ boolean bfd_check_format_matches(bfd *abfd, bfd_format format, char ***matching);
+@@ -84,7 +84,7 @@
+ should free it.
+ 
+ @findex bfd_set_format
+-@subsubsection @code{bfd_set_format}
++sean-subsubsection @code{bfd_set_format}
+ @strong{Synopsis}
+ @example
+ boolean bfd_set_format(bfd *abfd, bfd_format format);
+@@ -96,7 +96,7 @@
+ is not open for writing, then an error occurs.
+ 
+ @findex bfd_format_string
+-@subsubsection @code{bfd_format_string}
++sean-subsubsection @code{bfd_format_string}
+ @strong{Synopsis}
+ @example
+ const char *bfd_format_string(bfd_format format);
+diff -Naur src/binutils-2.13.1/bfd/doc/init.texi src/binutils-2.13.1-patched/bfd/doc/init.texi
+--- src/binutils-2.13.1/bfd/doc/init.texi	2002-08-05 16:43:45.000000000 -0400
++++ src/binutils-2.13.1-patched/bfd/doc/init.texi	2018-04-11 00:09:46.416967492 -0400
+@@ -2,7 +2,7 @@
+ These are the functions that handle initializing a BFD.
+ 
+ @findex bfd_init
+-@subsubsection @code{bfd_init}
++sean-subsubsection @code{bfd_init}
+ @strong{Synopsis}
+ @example
+ void bfd_init(void);
+diff -Naur src/binutils-2.13.1/bfd/doc/libbfd.texi src/binutils-2.13.1-patched/bfd/doc/libbfd.texi
+--- src/binutils-2.13.1/bfd/doc/libbfd.texi	2002-08-05 16:43:45.000000000 -0400
++++ src/binutils-2.13.1-patched/bfd/doc/libbfd.texi	2018-04-11 00:09:46.416967492 -0400
+@@ -7,7 +7,7 @@
+ completeness.
+ 
+ @findex bfd_write_bigendian_4byte_int
+-@subsubsection @code{bfd_write_bigendian_4byte_int}
++sean-subsubsection @code{bfd_write_bigendian_4byte_int}
+ @strong{Synopsis}
+ @example
+ boolean bfd_write_bigendian_4byte_int (bfd *, unsigned int);
+@@ -18,9 +18,9 @@
+ archives.
+ 
+ @findex bfd_put_size
+-@subsubsection @code{bfd_put_size}
++sean-subsubsection @code{bfd_put_size}
+ @findex bfd_get_size
+-@subsubsection @code{bfd_get_size}
++sean-subsubsection @code{bfd_get_size}
+ @strong{Description}@*
+ These macros as used for reading and writing raw data in
+ sections; each access (except for bytes) is vectored through
+@@ -95,7 +95,7 @@
+ @end example
+ 
+ @findex bfd_h_put_size
+-@subsubsection @code{bfd_h_put_size}
++sean-subsubsection @code{bfd_h_put_size}
+ @strong{Description}@*
+ These macros have the same function as their @code{bfd_get_x}
+ brethren, except that they are used for removing information
+@@ -193,7 +193,7 @@
+ @end example
+ 
+ @findex bfd_log2
+-@subsubsection @code{bfd_log2}
++sean-subsubsection @code{bfd_log2}
+ @strong{Synopsis}
+ @example
+ unsigned int bfd_log2 (bfd_vma x);
+diff -Naur src/binutils-2.13.1/bfd/doc/Makefile.am src/binutils-2.13.1-patched/bfd/doc/Makefile.am
+--- src/binutils-2.13.1/bfd/doc/Makefile.am	2002-06-08 04:50:44.000000000 -0400
++++ src/binutils-2.13.1-patched/bfd/doc/Makefile.am	2018-04-11 00:09:46.416967492 -0400
+@@ -89,17 +89,23 @@
+ 
+ # We use bfdt.texi, rather than bfd.texi, to avoid conflicting with
+ # bfd.texinfo on an 8.3 filesystem.
+-s-bfd: $(MKDOC) $(srcdir)/../bfd.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../bfd.c >bfd.tmp
+-	$(srcdir)/../../move-if-change bfd.tmp bfdt.texi
+-	touch s-bfd
++s-bfd:
++#	$(MKDOC) $(srcdir)/../bfd.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../bfd.c >bfd.tmp
++#	$(srcdir)/../../move-if-change bfd.tmp bfdt.texi
++#	touch s-bfd
+ bfdt.texi: s-bfd
++	cp $(srcdir)/bfdt.texi bfdt.texi
++#sean-
+ 
+-s-cache: $(MKDOC) $(srcdir)/../cache.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../cache.c >cache.tmp
+-	$(srcdir)/../../move-if-change cache.tmp cache.texi
+-	touch s-cache
++s-cache:
++#	$(MKDOC) $(srcdir)/../cache.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../cache.c >cache.tmp
++#	$(srcdir)/../../move-if-change cache.tmp cache.texi
++#	touch s-cache
+ cache.texi: s-cache
++	cp $(srcdir)/cache.texi cache.texi
++#sean-
+ 
+ s-coffcode: $(MKDOC) $(srcdir)/../coffcode.h $(srcdir)/doc.str
+ 	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../coffcode.h >coffcode.tmp
+@@ -107,17 +113,23 @@
+ 	touch s-coffcode
+ coffcode.texi: s-coffcode
+ 
+-s-core: $(MKDOC) $(srcdir)/../corefile.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../corefile.c >core.tmp
+-	$(srcdir)/../../move-if-change core.tmp core.texi
+-	touch s-core
++s-core:
++#	$(MKDOC) $(srcdir)/../corefile.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../corefile.c >core.tmp
++#	$(srcdir)/../../move-if-change core.tmp core.texi
++#	touch s-core
+ core.texi: s-core
++	cp $(srcdir)/core.texi core.texi
++#sean-
+ 
+-s-elf: $(MKDOC) $(srcdir)/../elf.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../elf.c >elf.tmp
+-	$(srcdir)/../../move-if-change elf.tmp elf.texi
+-	touch s-elf
++s-elf:
++#	$(MKDOC) $(srcdir)/../elf.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../elf.c >elf.tmp
++#	$(srcdir)/../../move-if-change elf.tmp elf.texi
++#	touch s-elf
+ elf.texi: s-elf
++	cp $(srcdir)/elf.texi elf.texi
++#sean-
+ 
+ s-elfcode: $(MKDOC) $(srcdir)/../elfcode.h $(srcdir)/doc.str
+ 	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../elfcode.h >elfcode.tmp
+@@ -131,29 +143,41 @@
+ 	touch s-mmo
+ mmo.texi: s-mmo
+ 
+-s-format: $(MKDOC) $(srcdir)/../format.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../format.c >format.tmp
+-	$(srcdir)/../../move-if-change format.tmp format.texi
+-	touch s-format
++s-format:
++#	$(MKDOC) $(srcdir)/../format.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../format.c >format.tmp
++#	$(srcdir)/../../move-if-change format.tmp format.texi
++#	touch s-format
+ format.texi: s-format
++	cp $(srcdir)/format.texi format.texi
++#sean-
+ 
+-s-libbfd: $(MKDOC) $(srcdir)/../libbfd.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../libbfd.c >libbfd.tmp
+-	$(srcdir)/../../move-if-change libbfd.tmp libbfd.texi
+-	touch s-libbfd
++s-libbfd:
++#	$(MKDOC) $(srcdir)/../libbfd.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../libbfd.c >libbfd.tmp
++#	$(srcdir)/../../move-if-change libbfd.tmp libbfd.texi
++#	touch s-libbfd
+ libbfd.texi: s-libbfd
++	cp $(srcdir)/libbfd.texi libbfd.texi
++#sean-
+ 
+-s-opncls: $(MKDOC) $(srcdir)/../opncls.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str  <$(srcdir)/../opncls.c >opncls.tmp
+-	$(srcdir)/../../move-if-change opncls.tmp opncls.texi
+-	touch s-opncls
++s-opncls:
++#	$(MKDOC) $(srcdir)/../opncls.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str  <$(srcdir)/../opncls.c >opncls.tmp
++#	$(srcdir)/../../move-if-change opncls.tmp opncls.texi
++#	touch s-opncls
+ opncls.texi: s-opncls
++	cp $(srcdir)/opncls.texi opncls.texi
++#sean-
+ 
+-s-reloc: $(MKDOC) $(srcdir)/../reloc.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../reloc.c >reloc.tmp
+-	$(srcdir)/../../move-if-change reloc.tmp reloc.texi
+-	touch s-reloc
++s-reloc:
++#	$(MKDOC) $(srcdir)/../reloc.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../reloc.c >reloc.tmp
++#	$(srcdir)/../../move-if-change reloc.tmp reloc.texi
++#	touch s-reloc
+ reloc.texi: s-reloc
++	cp $(srcdir)/reloc.texi reloc.texi
++#sean-
+ 
+ s-section: $(MKDOC) $(srcdir)/../section.c $(srcdir)/doc.str
+ 	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../section.c >section.tmp
+@@ -173,11 +197,14 @@
+ 	touch s-targets
+ targets.texi: s-targets
+ 
+-s-init: $(MKDOC) $(srcdir)/../init.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../init.c >init.tmp
+-	$(srcdir)/../../move-if-change init.tmp init.texi
+-	touch s-init
++s-init: 
++#	$(MKDOC) $(srcdir)/../init.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../init.c >init.tmp
++#	$(srcdir)/../../move-if-change init.tmp init.texi
++#	touch s-init
+ init.texi: s-init
++	cp $(srcdir)/init.texi init.texi
++#sean-
+ 
+ s-hash: $(MKDOC) $(srcdir)/../hash.c $(srcdir)/doc.str
+ 	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../hash.c >hash.tmp
+diff -Naur src/binutils-2.13.1/bfd/doc/Makefile.in src/binutils-2.13.1-patched/bfd/doc/Makefile.in
+--- src/binutils-2.13.1/bfd/doc/Makefile.in	2002-11-07 11:57:35.000000000 -0500
++++ src/binutils-2.13.1-patched/bfd/doc/Makefile.in	2018-04-11 00:09:46.416967492 -0400
+@@ -484,11 +484,14 @@
+ 	touch s-aoutx
+ aoutx.texi: s-aoutx
+ 
+-s-archive: $(MKDOC) $(srcdir)/../archive.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../archive.c >archive.tmp
+-	$(srcdir)/../../move-if-change archive.tmp archive.texi
+-	touch s-archive
++s-archive:
++#	$(MKDOC) $(srcdir)/../archive.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../archive.c >archive.tmp
++#	$(srcdir)/../../move-if-change archive.tmp archive.texi
++#	touch s-archive
+ archive.texi: s-archive
++	cp $(srcdir)/archive.texi archive.texi
++#sean-
+ 
+ s-archures: $(MKDOC) $(srcdir)/../archures.c $(srcdir)/doc.str
+ 	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../archures.c >archures.tmp
+@@ -498,17 +501,23 @@
+ 
+ # We use bfdt.texi, rather than bfd.texi, to avoid conflicting with
+ # bfd.texinfo on an 8.3 filesystem.
+-s-bfd: $(MKDOC) $(srcdir)/../bfd.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../bfd.c >bfd.tmp
+-	$(srcdir)/../../move-if-change bfd.tmp bfdt.texi
+-	touch s-bfd
++s-bfd:
++#	$(MKDOC) $(srcdir)/../bfd.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../bfd.c >bfd.tmp
++#	$(srcdir)/../../move-if-change bfd.tmp bfdt.texi
++#	touch s-bfd
+ bfdt.texi: s-bfd
++	cp $(srcdir)/bfdt.texi bfdt.texi
++#sean-
+ 
+-s-cache: $(MKDOC) $(srcdir)/../cache.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../cache.c >cache.tmp
+-	$(srcdir)/../../move-if-change cache.tmp cache.texi
+-	touch s-cache
++s-cache:
++#	$(MKDOC) $(srcdir)/../cache.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../cache.c >cache.tmp
++#	$(srcdir)/../../move-if-change cache.tmp cache.texi
++#	touch s-cache
+ cache.texi: s-cache
++	cp $(srcdir)/cache.texi cache.texi
++#sean-
+ 
+ s-coffcode: $(MKDOC) $(srcdir)/../coffcode.h $(srcdir)/doc.str
+ 	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../coffcode.h >coffcode.tmp
+@@ -516,17 +525,23 @@
+ 	touch s-coffcode
+ coffcode.texi: s-coffcode
+ 
+-s-core: $(MKDOC) $(srcdir)/../corefile.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../corefile.c >core.tmp
+-	$(srcdir)/../../move-if-change core.tmp core.texi
+-	touch s-core
++s-core:
++#	$(MKDOC) $(srcdir)/../corefile.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../corefile.c >core.tmp
++#	$(srcdir)/../../move-if-change core.tmp core.texi
++#	touch s-core
+ core.texi: s-core
++	cp $(srcdir)/core.texi core.texi
++#sean-
+ 
+-s-elf: $(MKDOC) $(srcdir)/../elf.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../elf.c >elf.tmp
+-	$(srcdir)/../../move-if-change elf.tmp elf.texi
+-	touch s-elf
++s-elf:
++#	$(MKDOC) $(srcdir)/../elf.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../elf.c >elf.tmp
++#	$(srcdir)/../../move-if-change elf.tmp elf.texi
++#	touch s-elf
+ elf.texi: s-elf
++	cp $(srcdir)/elf.texi elf.texi
++#sean-
+ 
+ s-elfcode: $(MKDOC) $(srcdir)/../elfcode.h $(srcdir)/doc.str
+ 	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../elfcode.h >elfcode.tmp
+@@ -540,29 +555,41 @@
+ 	touch s-mmo
+ mmo.texi: s-mmo
+ 
+-s-format: $(MKDOC) $(srcdir)/../format.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../format.c >format.tmp
+-	$(srcdir)/../../move-if-change format.tmp format.texi
+-	touch s-format
++s-format:
++#	$(MKDOC) $(srcdir)/../format.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../format.c >format.tmp
++#	$(srcdir)/../../move-if-change format.tmp format.texi
++#	touch s-format
+ format.texi: s-format
++	cp $(srcdir)/format.texi format.texi
++#sean-
+ 
+-s-libbfd: $(MKDOC) $(srcdir)/../libbfd.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../libbfd.c >libbfd.tmp
+-	$(srcdir)/../../move-if-change libbfd.tmp libbfd.texi
+-	touch s-libbfd
++s-libbfd:
++#	$(MKDOC) $(srcdir)/../libbfd.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str < $(srcdir)/../libbfd.c >libbfd.tmp
++#	$(srcdir)/../../move-if-change libbfd.tmp libbfd.texi
++#	touch s-libbfd
+ libbfd.texi: s-libbfd
++	cp $(srcdir)/libbfd.texi libbfd.texi
++#sean-
+ 
+-s-opncls: $(MKDOC) $(srcdir)/../opncls.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str  <$(srcdir)/../opncls.c >opncls.tmp
+-	$(srcdir)/../../move-if-change opncls.tmp opncls.texi
+-	touch s-opncls
++s-opncls:
++#	$(MKDOC) $(srcdir)/../opncls.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str  <$(srcdir)/../opncls.c >opncls.tmp
++#	$(srcdir)/../../move-if-change opncls.tmp opncls.texi
++#	touch s-opncls
+ opncls.texi: s-opncls
++	cp $(srcdir)/opncls.texi opncls.texi
++#sean-
+ 
+-s-reloc: $(MKDOC) $(srcdir)/../reloc.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../reloc.c >reloc.tmp
+-	$(srcdir)/../../move-if-change reloc.tmp reloc.texi
+-	touch s-reloc
++s-reloc:
++#	$(MKDOC) $(srcdir)/../reloc.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../reloc.c >reloc.tmp
++#	$(srcdir)/../../move-if-change reloc.tmp reloc.texi
++#	touch s-reloc
+ reloc.texi: s-reloc
++	cp $(srcdir)/reloc.texi reloc.texi
++#sean-
+ 
+ s-section: $(MKDOC) $(srcdir)/../section.c $(srcdir)/doc.str
+ 	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../section.c >section.tmp
+@@ -582,11 +609,14 @@
+ 	touch s-targets
+ targets.texi: s-targets
+ 
+-s-init: $(MKDOC) $(srcdir)/../init.c $(srcdir)/doc.str
+-	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../init.c >init.tmp
+-	$(srcdir)/../../move-if-change init.tmp init.texi
+-	touch s-init
++s-init:
++#	$(MKDOC) $(srcdir)/../init.c $(srcdir)/doc.str
++#	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../init.c >init.tmp
++#	$(srcdir)/../../move-if-change init.tmp init.texi
++#	touch s-init
+ init.texi: s-init
++	cp $(srcdir)/init.texi init.texi
++#sean-
+ 
+ s-hash: $(MKDOC) $(srcdir)/../hash.c $(srcdir)/doc.str
+ 	./$(MKDOC) -f $(srcdir)/doc.str <$(srcdir)/../hash.c >hash.tmp
+diff -Naur src/binutils-2.13.1/bfd/doc/opncls.texi src/binutils-2.13.1-patched/bfd/doc/opncls.texi
+--- src/binutils-2.13.1/bfd/doc/opncls.texi	2002-08-05 16:43:45.000000000 -0400
++++ src/binutils-2.13.1-patched/bfd/doc/opncls.texi	2018-04-11 00:09:46.416967492 -0400
+@@ -2,7 +2,7 @@
+ 
+ 
+ @findex bfd_openr
+-@subsubsection @code{bfd_openr}
++sean-subsubsection @code{bfd_openr}
+ @strong{Synopsis}
+ @example
+ bfd *bfd_openr(const char *filename, const char *target);
+@@ -18,7 +18,7 @@
+ are @code{bfd_error_no_memory}, @code{bfd_error_invalid_target} or @code{system_call} error.
+ 
+ @findex bfd_fdopenr
+-@subsubsection @code{bfd_fdopenr}
++sean-subsubsection @code{bfd_fdopenr}
+ @strong{Synopsis}
+ @example
+ bfd *bfd_fdopenr(const char *filename, const char *target, int fd);
+@@ -42,7 +42,7 @@
+ Possible errors are @code{bfd_error_no_memory}, @code{bfd_error_invalid_target} and @code{bfd_error_system_call}.
+ 
+ @findex bfd_openstreamr
+-@subsubsection @code{bfd_openstreamr}
++sean-subsubsection @code{bfd_openstreamr}
+ @strong{Synopsis}
+ @example
+ bfd *bfd_openstreamr(const char *, const char *, PTR);
+@@ -52,7 +52,7 @@
+ the BFD is passed to @code{bfd_close}, the stream will be closed.
+ 
+ @findex bfd_openw
+-@subsubsection @code{bfd_openw}
++sean-subsubsection @code{bfd_openw}
+ @strong{Synopsis}
+ @example
+ bfd *bfd_openw(const char *filename, const char *target);
+@@ -65,7 +65,7 @@
+ @code{bfd_error_invalid_target}.
+ 
+ @findex bfd_close
+-@subsubsection @code{bfd_close}
++sean-subsubsection @code{bfd_close}
+ @strong{Synopsis}
+ @example
+ boolean bfd_close(bfd *abfd);
+@@ -85,7 +85,7 @@
+ @code{true} is returned if all is ok, otherwise @code{false}.
+ 
+ @findex bfd_close_all_done
+-@subsubsection @code{bfd_close_all_done}
++sean-subsubsection @code{bfd_close_all_done}
+ @strong{Synopsis}
+ @example
+ boolean bfd_close_all_done(bfd *);
+@@ -105,7 +105,7 @@
+ @code{true} is returned if all is ok, otherwise @code{false}.
+ 
+ @findex bfd_create
+-@subsubsection @code{bfd_create}
++sean-subsubsection @code{bfd_create}
+ @strong{Synopsis}
+ @example
+ bfd *bfd_create(const char *filename, bfd *templ);
+@@ -117,7 +117,7 @@
+ format is always set to @code{bfd_object}.
+ 
+ @findex bfd_make_writable
+-@subsubsection @code{bfd_make_writable}
++sean-subsubsection @code{bfd_make_writable}
+ @strong{Synopsis}
+ @example
+ boolean bfd_make_writable(bfd *abfd);
+@@ -132,7 +132,7 @@
+ @code{true} is returned if all is ok, otherwise @code{false}.
+ 
+ @findex bfd_make_readable
+-@subsubsection @code{bfd_make_readable}
++sean-subsubsection @code{bfd_make_readable}
+ @strong{Synopsis}
+ @example
+ boolean bfd_make_readable(bfd *abfd);
+@@ -148,7 +148,7 @@
+ @code{true} is returned if all is ok, otherwise @code{false}.
+ 
+ @findex bfd_alloc
+-@subsubsection @code{bfd_alloc}
++sean-subsubsection @code{bfd_alloc}
+ @strong{Synopsis}
+ @example
+ PTR bfd_alloc (bfd *abfd, size_t wanted);
+diff -Naur src/binutils-2.13.1/bfd/doc/reloc.texi src/binutils-2.13.1-patched/bfd/doc/reloc.texi
+--- src/binutils-2.13.1/bfd/doc/reloc.texi	2002-10-30 12:02:37.000000000 -0500
++++ src/binutils-2.13.1-patched/bfd/doc/reloc.texi	2018-04-11 00:09:46.416967492 -0400
+@@ -223,7 +223,7 @@
+ relocations into pointers to the correct structure on input -
+ but it would be possible to create each howto field on demand.
+ 
+-@subsubsection @code{enum complain_overflow}
++sean-subsubsection @code{enum complain_overflow}
+ Indicates what sort of overflow checking should be done when
+ performing a relocation.
+ 
+@@ -248,7 +248,7 @@
+   complain_overflow_unsigned
+ @};
+ @end example
+-@subsubsection @code{reloc_howto_type}
++sean-subsubsection @code{reloc_howto_type}
+ The @code{reloc_howto_type} is a structure which contains all the
+ information that libbfd needs to know to tie up a back end's data.
+ 
+@@ -347,7 +347,7 @@
+ 
+ @end example
+ @findex The HOWTO Macro
+-@subsubsection @code{The HOWTO Macro}
++sean-subsubsection @code{The HOWTO Macro}
+ @strong{Description}@*
+ The HOWTO define is horrible and will go away.
+ @example
+@@ -395,7 +395,7 @@
+ @end example
+ 
+ @findex bfd_get_reloc_size
+-@subsubsection @code{bfd_get_reloc_size}
++sean-subsubsection @code{bfd_get_reloc_size}
+ @strong{Synopsis}
+ @example
+ unsigned int bfd_get_reloc_size (reloc_howto_type *);
+@@ -405,7 +405,7 @@
+ this returns the number of bytes operated on.
+ 
+ @findex arelent_chain
+-@subsubsection @code{arelent_chain}
++sean-subsubsection @code{arelent_chain}
+ @strong{Description}@*
+ How relocs are tied together in an @code{asection}:
+ @example
+@@ -419,7 +419,7 @@
+ @end example
+ 
+ @findex bfd_check_overflow
+-@subsubsection @code{bfd_check_overflow}
++sean-subsubsection @code{bfd_check_overflow}
+ @strong{Synopsis}
+ @example
+ bfd_reloc_status_type
+@@ -438,7 +438,7 @@
+ @code{bfd_reloc_ok} or @code{bfd_reloc_overflow}.
+ 
+ @findex bfd_perform_relocation
+-@subsubsection @code{bfd_perform_relocation}
++sean-subsubsection @code{bfd_perform_relocation}
+ @strong{Synopsis}
+ @example
+ bfd_reloc_status_type
+@@ -467,7 +467,7 @@
+ this return @code{bfd_reloc_dangerous}.
+ 
+ @findex bfd_install_relocation
+-@subsubsection @code{bfd_install_relocation}
++sean-subsubsection @code{bfd_install_relocation}
+ @strong{Synopsis}
+ @example
+ bfd_reloc_status_type
+@@ -495,7 +495,7 @@
+ using this bit of code.
+ 
+ @findex bfd_reloc_code_type
+-@subsubsection @code{bfd_reloc_code_type}
++sean-subsubsection @code{bfd_reloc_code_type}
+ @strong{Description}@*
+ The insides of a reloc code.  The idea is that, eventually, there
+ will be one enumerator for every type of relocation we ever do.
+@@ -1664,7 +1664,7 @@
+ typedef enum bfd_reloc_code_real bfd_reloc_code_real_type;
+ @end example
+ @findex bfd_reloc_type_lookup
+-@subsubsection @code{bfd_reloc_type_lookup}
++sean-subsubsection @code{bfd_reloc_type_lookup}
+ @strong{Synopsis}
+ @example
+ reloc_howto_type *
+@@ -1676,7 +1676,7 @@
+ architecture noted.
+ 
+ @findex bfd_default_reloc_type_lookup
+-@subsubsection @code{bfd_default_reloc_type_lookup}
++sean-subsubsection @code{bfd_default_reloc_type_lookup}
+ @strong{Synopsis}
+ @example
+ reloc_howto_type *bfd_default_reloc_type_lookup
+@@ -1686,7 +1686,7 @@
+ Provides a default relocation lookup routine for any architecture.
+ 
+ @findex bfd_get_reloc_code_name
+-@subsubsection @code{bfd_get_reloc_code_name}
++sean-subsubsection @code{bfd_get_reloc_code_name}
+ @strong{Synopsis}
+ @example
+ const char *bfd_get_reloc_code_name (bfd_reloc_code_real_type code);
+@@ -1696,7 +1696,7 @@
+ Useful mainly for printing error messages.
+ 
+ @findex bfd_generic_relax_section
+-@subsubsection @code{bfd_generic_relax_section}
++sean-subsubsection @code{bfd_generic_relax_section}
+ @strong{Synopsis}
+ @example
+ boolean bfd_generic_relax_section
+@@ -1710,7 +1710,7 @@
+ don't do relaxing -- i.e., does nothing.
+ 
+ @findex bfd_generic_gc_sections
+-@subsubsection @code{bfd_generic_gc_sections}
++sean-subsubsection @code{bfd_generic_gc_sections}
+ @strong{Synopsis}
+ @example
+ boolean bfd_generic_gc_sections
+@@ -1721,7 +1721,7 @@
+ don't do section gc -- i.e., does nothing.
+ 
+ @findex bfd_generic_merge_sections
+-@subsubsection @code{bfd_generic_merge_sections}
++sean-subsubsection @code{bfd_generic_merge_sections}
+ @strong{Synopsis}
+ @example
+ boolean bfd_generic_merge_sections
+@@ -1732,7 +1732,7 @@
+ which don't have SEC_MERGE support -- i.e., does nothing.
+ 
+ @findex bfd_generic_get_relocated_section_contents
+-@subsubsection @code{bfd_generic_get_relocated_section_contents}
++sean-subsubsection @code{bfd_generic_get_relocated_section_contents}
+ @strong{Synopsis}
+ @example
+ bfd_byte *
+diff -Naur src/binutils-2.13.1/configure src/binutils-2.13.1-patched/configure
+--- src/binutils-2.13.1/configure	2002-05-31 16:09:45.000000000 -0400
++++ src/binutils-2.13.1-patched/configure	2018-04-11 00:30:36.634618059 -0400
+@@ -1030,8 +1030,10 @@
+ 	CC="gcc"
+ 	echo 'void f(){}' > conftest.c
+ 	if test -z "`${CC} -g -c conftest.c 2>&1`"; then
+-	  CFLAGS=${CFLAGS-"-g -O2"}
+-	  CXXFLAGS=${CXXFLAGS-"-g -O2"}
++#	  CFLAGS=${CFLAGS-"-g -O2"}
++#	  CXXFLAGS=${CXXFLAGS-"-g -O2"}
++	  CFLAGS=${CFLAGS-"-g"}
++	  CXXFLAGS=${CXXFLAGS-"-g"}
+ 	else
+ 	  CFLAGS=${CFLAGS-"-O2"}
+ 	  CXXFLAGS=${CXXFLAGS-"-O2"}
+diff -Naur src/binutils-2.13.1/gas/doc/as.texinfo src/binutils-2.13.1-patched/gas/doc/as.texinfo
+--- src/binutils-2.13.1/gas/doc/as.texinfo	2002-06-14 10:08:53.000000000 -0400
++++ src/binutils-2.13.1-patched/gas/doc/as.texinfo	2018-04-11 00:09:46.420967472 -0400
+@@ -3526,11 +3526,11 @@
+ @dfn{Is Not Equal To}
+ @item <
+ @dfn{Is Less Than}
+-@itemx >
++sean-itemx >
+ @dfn{Is Greater Than}
+-@itemx >=
++sean-itemx >=
+ @dfn{Is Greater Than Or Equal To}
+-@itemx <=
++sean-itemx <=
+ @dfn{Is Less Than Or Equal To}
+ 
+ The comparison operators can be used as infix operators.  A true results has a
+diff -Naur src/binutils-2.13.1/gas/doc/c-mips.texi src/binutils-2.13.1-patched/gas/doc/c-mips.texi
+--- src/binutils-2.13.1/gas/doc/c-mips.texi	2002-05-30 21:17:15.000000000 -0400
++++ src/binutils-2.13.1-patched/gas/doc/c-mips.texi	2018-04-11 00:09:46.420967472 -0400
+@@ -131,10 +131,10 @@
+ instructions around accesses to the @samp{HI} and @samp{LO} registers.
+ @samp{-no-m4650} turns off this option.
+ 
+-@itemx -m3900
+-@itemx -no-m3900
+-@itemx -m4100
+-@itemx -no-m4100
++sean-itemx -m3900
++sean-itemx -no-m3900
++sean-itemx -m4100
++sean-itemx -no-m4100
+ For each option @samp{-m@var{nnnn}}, generate code for the MIPS
+ @sc{r@var{nnnn}} chip.  This tells the assembler to accept instructions
+ specific to that chip, and to schedule for that chip's hazards.
+diff -Naur src/binutils-2.13.1/ld/ld.texinfo src/binutils-2.13.1-patched/ld/ld.texinfo
+--- src/binutils-2.13.1/ld/ld.texinfo	2002-09-23 18:15:57.000000000 -0400
++++ src/binutils-2.13.1-patched/ld/ld.texinfo	2018-04-11 00:09:46.420967472 -0400
+@@ -1391,7 +1391,7 @@
+ 
+ @kindex --version-script=@var{version-scriptfile}
+ @cindex version script, symbol versions
+-@itemx --version-script=@var{version-scriptfile}
++sean-itemx --version-script=@var{version-scriptfile}
+ Specify the name of a version script to the linker.  This is typically
+ used when creating shared libraries to specify additional information
+ about the version heirarchy for the library being created.  This option
+@@ -5329,7 +5329,7 @@
+ @printindex cp
+ 
+ @tex
+-% I think something like @colophon should be in texinfo.  In the
++% I think something like sean-colophon should be in texinfo.  In the
+ % meantime:
+ \long\def\colophon{\hbox to0pt{}\vfill
+ \centerline{The body of this manual is set in}
+@@ -5340,7 +5340,7 @@
+ \centerline{{\sl\fontname\tensl\/}}
+ \centerline{are used for emphasis.}\vfill}
+ \page\colophon
+-% Blame: doc@cygnus.com, 28mar91.
++% Blame: docsean-cygnus.com, 28mar91.
+ @end tex
+ 
+ 
