@@ -5,4 +5,5 @@
 
 /bld/*
 /src/*
-/pkg/*
+
+pkg
