@@ -1,0 +1,8 @@
+*.out
+*.o
+*.elf
+*.src
+
+/bld/*
+/src/*
+/pkg/*
