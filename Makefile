@@ -13,7 +13,7 @@
 # relative packages
 #    autoconfig automake libtool texinfo gperf
 #
-# packages(v3.4.6):
+# default combination packages(v3.2.1):
 #    (can be downloaded from ftp://sources.redhat.com/pub/)
 #    binutils-2.13.1.tar.gz
 #    gcc-core-3.2.1.tar.gz
@@ -23,7 +23,8 @@
 #
 # patch:
 #    (made by Sean)
-#    gcc-3.4.6-arm-elf.patch
+#    binutils-2.13.1-arm-elf.patch
+#    gcc-3.2.1-arm-elf.patch
 #
 # build steps
 #    make (all)		//default
@@ -45,10 +46,14 @@
 #    3.2.1(default)
 #    3.4.6 as well
 ################################################################################
+
+#config here
+#------------------------8<----------------------------
 _GCC_VER_ := 3.2.1
 #_PATH_   := $(HOME)/gnutools
 _PATH_    :=
 #absolute path only
+#------------------------8<----------------------------
 
 ifeq ($(_GCC_VER_), 3.2.1)
 #version 3.2.1
