@@ -208,7 +208,7 @@ gdb:
 
 binutils_inner:
 	@echo "binutils"
-ifeq ($(call FILE_DIR_EXIST,configure.out,./),)
+ifeq ($(call FILE_DIR_EXIST,Makefile,./),)
 	../../src/binutils-$(BINUTILS_VERSION)/configure --target=$(TARGET) --prefix=$(_PREFIX_INN_) -v 2>&1 |tee configure.out
 endif
 	make -w all install 2>&1 |tee make.out
@@ -216,7 +216,7 @@ endif
 
 gcc_inner:
 	@echo "gcc"
-ifeq ($(call FILE_DIR_EXIST,configure.out,./),)
+ifeq ($(call FILE_DIR_EXIST,Makefile,./),)
 	../../src/gcc-$(GCC_VERSION)/configure --target=$(TARGET) --prefix=$(_PREFIX_INN_) --enable-languages=c,c++ --with-gnu-as --with-gnu-ld --with-newlib --with-gxx-include-dir=$(PREFIX)/$(TARGET)/include -v 2>&1 |tee configure.out
 endif
 	make -w all install 2>&1 |tee make.out
@@ -224,7 +224,7 @@ endif
 
 gdb_inner:
 	@echo "gdb"
-ifeq ($(call FILE_DIR_EXIST,configure.out,./),)
+ifeq ($(call FILE_DIR_EXIST,Makefile,./),)
 	../../src/gdb-$(GDB_VERSION)/configure --target=$(TARGET) --prefix=$(_PREFIX_INN_) -v 2>&1 |tee configure.out
 endif
 	make -w all install 2>&1 |tee make.out
