@@ -1,3 +1,10 @@
+/*
+ * hello.c
+ *
+ * Sean<SeanInApril@163.com>
+ *
+ * test routine
+ */
 #include <stdio.h>
 
 int fun(int a, int b)
