@@ -256,6 +256,13 @@ test-tool:
 ################################################################################
 pack:
 	mkdir -pv target
+
+	@echo "save versions"
+	@echo "binutils-"${BINUTILS_VERSION} >  ${PREFIX}/versions.txt
+	@echo "gcc-"${GCC_VERSION}           >> ${PREFIX}/versions.txt
+	@echo "newlib-"${NEWLIB_VERSION}     >> ${PREFIX}/versions.txt
+	@echo "gdb-"${GDB_VERSION}           >> ${PREFIX}/versions.txt
+
 	tar -zcvf target/$(TARGET)-toolchain-$(GCC_VERSION)-$$(date +%Y%m%d%H%M%S).tar.gz -C $(_PREFIX_) $(TARGET)-$(GCC_VERSION)
 
 ################################################################################
