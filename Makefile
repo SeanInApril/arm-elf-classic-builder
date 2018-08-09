@@ -87,6 +87,8 @@ PREFIX := $(_PREFIX_)/$(TARGET)-$(GCC_VERSION)
 SW_DL_URL := ftp://sources.redhat.com/pub
 DLFLAGS   := -c --tries=0 --timeout=10
 
+SW_DL_URL_NEW := https://mirrors.tuna.tsinghua.edu.cn/gnu
+
 #function to check wheather file exsits in path
 #return empty, if doesn't exist
 #$(1) - name
@@ -140,10 +142,16 @@ dl: download
 
 download:
 	mkdir -pv pkg
-	wget $(DLFLAGS) -O pkg/binutils-$(BINUTILS_VERSION).tar.gz $(SW_DL_URL)/binutils/releases/binutils-$(BINUTILS_VERSION).tar.gz
-	wget $(DLFLAGS) -O pkg/gcc-core-$(GCC_VERSION).tar.gz      $(SW_DL_URL)/gcc/releases/gcc-$(GCC_VERSION)/gcc-core-$(GCC_VERSION).tar.gz
-	wget $(DLFLAGS) -O pkg/gcc-g++-$(GCC_VERSION).tar.gz       $(SW_DL_URL)/gcc/releases/gcc-$(GCC_VERSION)/gcc-g++-$(GCC_VERSION).tar.gz
-	wget $(DLFLAGS) -O pkg/gdb-$(GDB_VERSION).tar.gz           $(SW_DL_URL)/gdb/releases/gdb-$(GDB_VERSION).tar.gz
+#	wget $(DLFLAGS) -O pkg/binutils-$(BINUTILS_VERSION).tar.gz $(SW_DL_URL)/binutils/releases/binutils-$(BINUTILS_VERSION).tar.gz
+#	wget $(DLFLAGS) -O pkg/gcc-core-$(GCC_VERSION).tar.gz      $(SW_DL_URL)/gcc/releases/gcc-$(GCC_VERSION)/gcc-core-$(GCC_VERSION).tar.gz
+#	wget $(DLFLAGS) -O pkg/gcc-g++-$(GCC_VERSION).tar.gz       $(SW_DL_URL)/gcc/releases/gcc-$(GCC_VERSION)/gcc-g++-$(GCC_VERSION).tar.gz
+#	wget $(DLFLAGS) -O pkg/gdb-$(GDB_VERSION).tar.gz           $(SW_DL_URL)/gdb/releases/gdb-$(GDB_VERSION).tar.gz
+#	wget $(DLFLAGS) -O pkg/newlib-$(NEWLIB_VERSION).tar.gz     $(SW_DL_URL)/newlib/newlib-$(NEWLIB_VERSION).tar.gz
+
+	wget $(DLFLAGS) -O pkg/binutils-$(BINUTILS_VERSION).tar.gz $(SW_DL_URL_NEW)/binutils/binutils-$(BINUTILS_VERSION).tar.gz
+	wget $(DLFLAGS) -O pkg/gcc-core-$(GCC_VERSION).tar.gz      $(SW_DL_URL_NEW)/gcc/gcc-$(GCC_VERSION)/gcc-core-$(GCC_VERSION).tar.gz
+	wget $(DLFLAGS) -O pkg/gcc-g++-$(GCC_VERSION).tar.gz       $(SW_DL_URL_NEW)/gcc/gcc-$(GCC_VERSION)/gcc-g++-$(GCC_VERSION).tar.gz
+	wget $(DLFLAGS) -O pkg/gdb-$(GDB_VERSION).tar.gz           $(SW_DL_URL_NEW)/gdb/gdb-$(GDB_VERSION).tar.gz
 	wget $(DLFLAGS) -O pkg/newlib-$(NEWLIB_VERSION).tar.gz     $(SW_DL_URL)/newlib/newlib-$(NEWLIB_VERSION).tar.gz
 
 #gcc-3.2.1 arm only
