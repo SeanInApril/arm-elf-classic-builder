@@ -156,7 +156,7 @@ download:
 
 #gcc-3.2.1 arm only
 ifeq ($(_GCC_VER_), 3.2.1)
-	wget $(DLFLAGS) -O pkg/gcc-3.2.1-arm-multilib.patch        http://ecos.sourceware.org/gcc-3.2.1-arm-multilib.patch
+	wget $(DLFLAGS) $(DLFLAGS) -O pkg/gcc-3.2.1-arm-multilib.patch        http://ecos.sourceware.org/gcc-3.2.1-arm-multilib.patch
 endif
 
 ################################################################################
