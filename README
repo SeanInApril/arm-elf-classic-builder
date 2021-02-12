@@ -6,6 +6,8 @@
 a script to build arm-elf toolchain classic version 3.2.1
 3.4.6 and relative packages are supported as well
 
+in this builder, newlib is copied into and compiled with the gcc directly
+
 Envirments: Ubuntu-16.04/Niaoyun VPS
 
 binutils-2.13.1
