@@ -84,7 +84,8 @@ endif
 TARGET := arm-elf
 PREFIX := $(_PREFIX_)/$(TARGET)-$(GCC_VERSION)
 
-SW_DL_URL := ftp://sources.redhat.com/pub
+#SW_DL_URL := ftp://sources.redhat.com/pub
+SW_DL_URL := ftp://sourceware.org/pub
 DLFLAGS   := -c --tries=0 --timeout=10
 
 SW_DL_URL_NEW := https://mirrors.tuna.tsinghua.edu.cn/gnu
